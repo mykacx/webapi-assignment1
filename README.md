@@ -25,7 +25,7 @@ console.log(tickets.addBalance(100));
 console.log("========================================");
 
 // subtracts 200 from the balance
-console.log(tickets.removeBalance(200));
+console.log(tickets.subtractBalance(200));
 console.log("========================================");
 
 // checks the current balance
@@ -55,7 +55,12 @@ allows the user to buy tickets by its index from <code>eventTickets</code>
 returns the user's <code>balance</code><br />
 - addBalance(amount)<br />
 adds to the user's <code>balance</code> based on the <code>amount</code><br />
-- removeBalance(amount)<br />
+- subtractBalance(amount)<br />
 subtracts from the user's <code>balance</code> based on the <code>amount</code><br />
 - showPurchasedTickets()<br />
 returns a list of tickets from <code>purchasedTickets</code>
+
+## Notes
+- initial balance can be changed directly in <code>balance</code>
+- events can be changed directly in <code>currentEvents</code>
+- available tickets can be changed directly in <code>eventTickets</code>

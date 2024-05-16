@@ -81,7 +81,8 @@ module.exports = {
         }
     },
 
-    removeBalance(amount) {
+    // Subtracts amount from current balance
+    subtractBalance(amount) {
         if (amount > 0) { 
             balance -= amount;
             return `Successfully subtracted $${amount} from your balance.\nNew balance: $${balance}`;

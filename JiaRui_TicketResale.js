@@ -1,4 +1,5 @@
-let balance = 1000; // Initial balance
+// Initial balance
+let balance = 500;
 
 // Array of current events
 let currentEvents = [
@@ -14,7 +15,8 @@ let eventTickets = [
     { eventName: "Olivia Rodrigo - GUTS world tour", price: 400, category: "VIP" },
     { eventName: "Olivia Rodrigo - GUTS world tour", price: 250, category: "CAT 5" },
     { eventName: "Olivia Rodrigo - GUTS world tour", price: 200, category: "CAT 6" },
-    { eventName: "CONAN GRAY - Found Heaven On Tour", price: 500, category: "VIP" }
+    { eventName: "CONAN GRAY - Found Heaven On Tour", price: 500, category: "VIP" },
+    { eventName: "CONAN GRAY - Found Heaven On Tour", price: 400, category: "VIP" }
 ];
 
 // Array of purchased tickets
@@ -38,10 +40,10 @@ module.exports = {
     // Case-insensitive function to search for tickets
     searchTickets(search) {
         const lowerCaseSearch = search.toLowerCase();
-        const foundTickets = eventTickets.filter(ticket => ticket.eventName.toLowerCase().includes(lowerCaseSearch));
-
+        const foundTickets = eventTickets.filter((ticket, index) => ticket.eventName.toLowerCase().includes(lowerCaseSearch));
+    
         if (foundTickets.length > 0) {
-            return `Your search for "${search}" returned:\n` + foundTickets.map(ticket => `Event: ${ticket.eventName}, Price: $${ticket.price}, Category: ${ticket.category}`).join('\n');
+            return `Your search for "${search}" returned:\n${foundTickets.map((ticket) => `Index: ${eventTickets.indexOf(ticket)}, Event: ${ticket.eventName}, Price: $${ticket.price}, Category: ${ticket.category}`).join('\n')}`;
         } else {
             return `No tickets found matching "${search}".`;
         }
@@ -76,6 +78,15 @@ module.exports = {
             return `Successfully added $${amount} to your balance.\nNew balance: $${balance}`;
         } else {
             return 'Amount to be added should be greater than zero.';
+        }
+    },
+
+    removeBalance(amount) {
+        if (amount > 0) { 
+            balance -= amount;
+            return `Successfully subtracted $${amount} from your balance.\nNew balance: $${balance}`;
+        } else {
+            return 'Amount to be subtracted should be greater than zero.';
         }
     },
 
